@@ -1,0 +1,13 @@
+source https://nuget.org/api/v2
+source https://ci.appveyor.com/nuget/tachyuscorp-cdj2r7dkqyo6 username: "paket@tachyus.com" password: "ifls09fhasdk134jldququ"
+framework: >= net46
+
+nuget FsPickler
+nuget FSharp.Data
+nuget FSharp.Data.SqlClient
+nuget FSharp.Compiler.Service
+
+# build
+nuget FAKE
+nuget SourceLink.Fake 
+nuget Tachyus.ConfigTools

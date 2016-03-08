@@ -1,0 +1,8 @@
+﻿SELECT 
+	[meId]
+	,[nvarcharme]
+	,CASE WHEN intMe = 0 THEN 'no oil' ELSE 'you''ve got oil' END AS GotOil
+	,CASE WHEN realMe = 0.0 THEN 'there is no reality' ELSE
+		CASE WHEN tinyIntMe = 0 THEN 'some things are real' ELSE 'reality' END
+		END AS WhatIsReality
+FROM [Data].[All_Data_Types]

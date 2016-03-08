@@ -1,0 +1,13 @@
+FRAMEWORK: >= NET46
+NUGET
+  remote: https://www.nuget.org/api/v2
+  specs:
+    FAKE (4.20.0)
+    FSharp.Compiler.Service (2.0.0.5)
+    FSharp.Data (2.2.5)
+    FSharp.Data.SqlClient (1.7.7)
+    FsPickler (1.8.0)
+    SourceLink.Fake (1.1.0)
+  remote: https://ci.appveyor.com/nuget/tachyuscorp-cdj2r7dkqyo6
+  specs:
+    Tachyus.ConfigTools (0.0.15)
