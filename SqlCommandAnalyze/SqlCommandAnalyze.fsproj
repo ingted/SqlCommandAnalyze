@@ -69,11 +69,8 @@
     <None Include="paket.references" />
     <Content Include="TestPlanXml.txt" />
     <Content Include="TestScalarQuery.txt" />
-    <None Include="ProxyAlerts.fsx" />
-    <None Include="Script1.fsx" />
     <None Include="Scripts\load-references-debug.fsx" />
     <None Include="Scripts\load-project-debug.fsx" />
-    <None Include="Script2.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
