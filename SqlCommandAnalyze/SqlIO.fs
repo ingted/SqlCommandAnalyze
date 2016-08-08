@@ -5,7 +5,7 @@ open System.Data
 open System.Data.SqlClient
 open FSharp.Data
 
-type EtlSourcedData =
+type SourcedData =
     {
     SelectorTypeName : string
     ScalarName : string
@@ -19,7 +19,7 @@ type EtlSourcedData =
 module SqlIO =
 
     [<Literal>]
-    let DesignTimeConn = "name=Entoleon_Proxy"
+    let DesignTimeConn = "name=AnalyzeTest"
 
     type EtlSource = SqlProgrammabilityProvider<DesignTimeConn>
 
@@ -61,7 +61,7 @@ module SqlIO =
 
         (sqlCommand2.ExecuteScalar()).ToString()
 
-    type RecentEtlSourcedData = SqlCommandProvider<"
+    type RecentSourcedData = SqlCommandProvider<"
         SELECT [SelectorTypeName]
               ,[ScalarName]
               ,[DataBase]
@@ -69,27 +69,27 @@ module SqlIO =
               ,[Table]
               ,[Column]
               ,[SystemTypeName]
-        FROM [Meta].[EtlSourcedData]
+        FROM [Meta].[SourcedData]
         WHERE SelectorTypeName = @SelectorTypeName
         AND StateDateTime = (
-            SELECT MAX(StateDateTime) AS StateDateTime FROM [Meta].[EtlSourcedData]
+            SELECT MAX(StateDateTime) AS StateDateTime FROM [Meta].[SourcedData]
             WHERE SelectorTypeName = @SelectorTypeName)
         ", DesignTimeConn>
 
-    let getRecentEtlSourcedData selectorTypeName (conn : string) =
+    let getRecentSourcedData selectorTypeName (conn : string) =
 
-        use cmd = new RecentEtlSourcedData(conn)
+        use cmd = new RecentSourcedData(conn)
 
         cmd.Execute(SelectorTypeName = selectorTypeName)
         |> Seq.fold (fun s t -> {SelectorTypeName = t.SelectorTypeName; ScalarName = t.ScalarName; DataBase = t.DataBase; Schema = t.Schema; Table = t.Table; Column = t.Column; SystemTypeName = t.SystemTypeName}::s) []
         |> List.sortBy (fun x -> (sortEtlSourcedData x))
         
-    let insertEtlSourcedData (conn : string) (etlSourcedData : EtlSourcedData list)  =
+    let insertSourcedData (conn : string) (etlSourcedData : SourcedData list)  =
 
         use conn = new SqlConnection(conn)
         use tran = conn.BeginTransaction(IsolationLevel.Serializable)
 
-        use etlSourcedDataTable = new EtlSource.Meta.Tables.EtlSourcedData()
+        use etlSourcedDataTable = new EtlSource.Meta.Tables.SourcedData()
 
         let timeNow = DateTime.UtcNow
 

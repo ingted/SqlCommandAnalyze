@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SqlCommandAnalyze", "SqlCommandAnalyze\SqlCommandAnalyze.fsproj", "{308F27F3-FDF2-4261-BA7F-A71D506DD76A}"
 EndProject
@@ -16,6 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{698B95
 		.build\.version = .build\.version
 		.build\build.fsx = .build\build.fsx
 		.build\build.ps1 = .build\build.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{3A5B0102-5991-445C-AC70-D2F30F067A95}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
 Global

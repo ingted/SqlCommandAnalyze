@@ -6,4 +6,5 @@ module Analyze =
 
     val SqlCommandsFromFile : file : string -> string list
 
-    val maintainEtlSourcedData : conn : string -> selectorTypeName : string -> unit
+    /// 
+    val maintainSourcedData : conn : string -> selectorTypeName : string -> unit

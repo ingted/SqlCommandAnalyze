@@ -63,6 +63,7 @@
   -->
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="SqlIO.fsi" />
     <Compile Include="SqlIO.fs" />
     <Compile Include="Analyze.fsi" />
     <Compile Include="Analyze.fs" />

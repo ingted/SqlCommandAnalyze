@@ -162,11 +162,11 @@ module Analyze =
         (scalarColumnReferenceIterator.MoveNext(), [])
         ||> loop 
 
-    let maintainEtlSourcedData conn selectorTypeName =
+    let maintainSourcedData conn selectorTypeName =
 
         let testFirstResultSet = getTestFirstResultSet conn
 
-        let recentEtlSourcedData = getRecentEtlSourcedData selectorTypeName conn
+        let recentEtlSourcedData = getRecentSourcedData selectorTypeName conn
 
         if testFirstResultSet = recentEtlSourcedData then ()
         else 
@@ -177,8 +177,8 @@ module Analyze =
                 //SystemTypeName will be None if it came from sourcedDataFromPlan
                 |> List.sortByDescending (fun x -> x.DataBase, x.Schema, x.Table, x.Column, x.SystemTypeName)
                 |> List.distinctBy (fun x -> x.DataBase, x.Schema, x.Table, x.Column)
-                |> insertEtlSourcedData conn
+                |> insertSourcedData conn
             else
-                insertEtlSourcedData conn testFirstResultSet 
+                insertSourcedData conn testFirstResultSet 
 
 
