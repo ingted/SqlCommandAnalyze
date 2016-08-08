@@ -19,7 +19,7 @@ Example of using meta data endpoints in a system to persist data flow informatio
 
 Note that in most cases the first test result meta data is sufficient, but in cases (for instance) where a CASE statement is in the SQL, first test result cannot analyze the column involved. In this case that data can be retrieved by examining the execution plan XML.
 
-## Entoleon_Proxy ##
+## AnalyzeTest ##
 
 Database for demo.
 
